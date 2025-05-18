@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+  namespace: raritetnik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-service
+  template:
+    metadata:
+      labels:
+        app: backend-service
+    spec:
+      imagePullSecrets:
+        - name: github-pull-secret
+      containers:
+        - name: backend-service
+          image: ghcr.io/shang-shang/treasure-flow:latest
+          ports:
+            - containerPort: 8141
+            - containerPort: 8145
+            - containerPort: 8146
+          envFrom:
+            - secretRef:
+                name: raritetnik-secrets
