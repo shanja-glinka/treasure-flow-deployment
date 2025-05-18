@@ -17,7 +17,7 @@ spec:
         - name: github-pull-secret
       containers:
         - name: backend-service
-          image: ghcr.io/shang-shang/treasure-flow:latest
+          image: ghcr.io/shang-shang/treasure-flow-deployment:latest
           ports:
             - containerPort: 8141
             - containerPort: 8145
